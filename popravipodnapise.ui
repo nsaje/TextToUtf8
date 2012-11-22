@@ -14,7 +14,11 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>PopraviPodnapise</string>
+   <string>Popravi podnapise</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>subtitles.png</normaloff>subtitles.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="acceptDrops">
@@ -66,14 +70,9 @@
      <layout class="QVBoxLayout" name="verticalLayout"/>
     </widget>
    </widget>
-   <zorder>stackedWidget</zorder>
-   <zorder>pushButton_2</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>

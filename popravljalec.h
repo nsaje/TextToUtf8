@@ -13,7 +13,8 @@ public:
 signals:
     void popravkiNaVoljo(QStringList *popravki);
     void error(QString description);
-    void finished();
+    void info(QString naslov, QString description);
+    void reset();
 public slots:
     void obdelajDatoteko(QString path);
     void obdelajOdgovor(int r);

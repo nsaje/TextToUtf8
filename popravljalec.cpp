@@ -4,12 +4,12 @@
 #include <QFile>
 #include <QTextCodec>
 #include <QStringList>
+#include <QMessageBox>
 
 QStringList Popravljalec::codecs = QStringList() \
-        // << "Windows-1250" \
-       // << "ISO-8859-15" \
-       // << "UTF-8";
-        << "Windows-1250";
+        << "Windows-1250" \
+        << "ISO-8859-15" \
+        << "UTF-8";
 
 
 
@@ -87,10 +87,13 @@ void Popravljalec::obdelajDatoteko(QString path)
 
             newFile.close();
 
+            emit info(trUtf8("Uspešno pretvorjeno"), trUtf8("Podnapisi uspešno pretvorjeni!"));
+
             return;
         }
     }
 
+    emit error(trUtf8("Nisem uspel pretvoriti podnapisov."));
 }
 
 void Popravljalec::obdelajOdgovor(int r)

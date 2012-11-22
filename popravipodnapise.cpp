@@ -73,3 +73,14 @@ void PopraviPodnapise::reset()
     this->setAcceptDrops(true);
     this->ui->stackedWidget->setCurrentIndex(0);
 }
+
+void PopraviPodnapise::error(QString message)
+{
+    QMessageBox::information(this, trUtf8("Napaka"), message);
+    reset();
+}
+
+void PopraviPodnapise::info(QString naslov, QString message)
+{
+    QMessageBox::information(this, naslov, message);
+}

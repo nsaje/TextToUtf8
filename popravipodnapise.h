@@ -22,6 +22,8 @@ signals:
     void response(int response);
 public slots:
     void prikaziPopravke(QStringList *popravki);
+    void error(QString description);
+    void info(QString naslov, QString description);
     void reset();
 
 protected:

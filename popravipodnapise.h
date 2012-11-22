@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtCore/QStringList>
+#include <QStringList>
 
 namespace Ui {
 class PopraviPodnapise;
@@ -15,6 +16,13 @@ class PopraviPodnapise : public QMainWindow
 public:
     explicit PopraviPodnapise(QWidget *parent = 0);
     ~PopraviPodnapise();
+
+signals:
+    void datotekaIzbrana(QString path);
+    void response(int response);
+public slots:
+    void prikaziPopravke(QStringList *popravki);
+    void reset();
 
 protected:
     void dragEnterEvent(QDragEnterEvent* event);

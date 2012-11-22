@@ -12,6 +12,7 @@ PopraviPodnapise::PopraviPodnapise(QWidget *parent) :
     ui(new Ui::PopraviPodnapise)
 {
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 PopraviPodnapise::~PopraviPodnapise()
@@ -43,7 +44,6 @@ void PopraviPodnapise::dropEvent(QDropEvent * event)
 
     if (mimeData->hasUrls())
     {
-        QStringList pathList;
         QList<QUrl> urlList = mimeData->urls();
 
         if (urlList.size() > 1)
@@ -52,7 +52,24 @@ void PopraviPodnapise::dropEvent(QDropEvent * event)
             return;
         }
 
-        pathList.append(urlList.at(1).path());
-        qDebug() << urlList.at(1).path();
+        if (urlList.size() < 1)
+        {
+            QMessageBox::information(this, trUtf8("Datoteka ne obstaja"), trUtf8("Prosimo, uporabite veljavno datoteko."));
+            return;
+        }
+
+        this->setAcceptDrops(false);
+        emit datotekaIzbrana(urlList.at(0).path());
     }
+}
+
+void PopraviPodnapise::prikaziPopravke(QStringList *popravki)
+{
+    this->ui->stackedWidget->setCurrentIndex(1);
+}
+
+void PopraviPodnapise::reset()
+{
+    this->setAcceptDrops(true);
+    this->ui->stackedWidget->setCurrentIndex(0);
 }

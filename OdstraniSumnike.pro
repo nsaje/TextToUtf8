@@ -6,8 +6,10 @@
 
 QT       += core gui
 
-TARGET = OdstraniSumnike
+TARGET = "Popravi podnapise"
 TEMPLATE = app
+
+win32:RC_FILE += PopraviPodnapise.rc
 
 
 SOURCES += main.cpp\
@@ -18,3 +20,6 @@ HEADERS  += popravipodnapise.h \
     popravljalec.h
 
 FORMS    += popravipodnapise.ui
+
+OTHER_FILES += \
+    PopraviPodnapise.rc

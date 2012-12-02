@@ -33,6 +33,7 @@ Popravljalec::Popravljalec(QObject *parent) :
 
 void Popravljalec::obdelajDatoteko(QString path)
 {
+    if (path.indexOf(":") != -1) path = path.mid(1);
     qDebug() << "Obdelujemo " << path;
 
     QFile origFile(path);
@@ -88,12 +89,14 @@ void Popravljalec::obdelajDatoteko(QString path)
             newFile.close();
 
             emit info(trUtf8("Uspešno pretvorjeno"), trUtf8("Podnapisi uspešno pretvorjeni!"));
+            emit reset();
 
             return;
         }
     }
 
     emit error(trUtf8("Nisem uspel pretvoriti podnapisov."));
+    emit reset();
 }
 
 void Popravljalec::obdelajOdgovor(int r)
